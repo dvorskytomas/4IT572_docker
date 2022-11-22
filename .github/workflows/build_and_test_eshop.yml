@@ -1,4 +1,4 @@
-name: Build and test our eshop
+name: Install, build and test our eshop
 
 on:
   workflow_dispatch:
