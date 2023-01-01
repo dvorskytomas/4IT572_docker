@@ -1,4 +1,4 @@
-name: Install, build, test and deploy our eshop
+name: Install, build and test our eshop
 
 on:
   workflow_dispatch:
@@ -103,18 +103,17 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_NEW }}
 
-      - name: Install python3
-        uses: actions/setup-python@v4
+      - name: Load Node modules and build folder
+        uses: actions/cache@v3.0.11
         with:
-          python-version: '3.10'
+          path: |
+            ~/.npm
+            ./node_modules
+            ./build
+          key: ${{ runner.os }}-build-${{ github.run_id }}
 
-      - name: Install ansible and boto
-        run: pip3 install ansible boto boto3
-
-      - name: Run ec2 deploy via ansible playbook
+      - name: Deploy to Firebase
+        uses: lowply/deploy-firebase@v0.0.5
         env:
-          ANSIBLE_HOST_KEY_CHECKING: False
-        run: |
-          ansible-playbook ansible/ec2_deploy.yml --vault-password-file .ansible_vault_password --key-file .ec2_ssh_key.pem --user ec2-user
-
-
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_PROJECT: dvot03-devops
