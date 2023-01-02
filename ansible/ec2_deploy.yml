@@ -74,3 +74,9 @@
     - wait_for:
         port:
           80
+
+    - name: Delete old eshop instances
+      community.aws.ec2_instance:
+        region: us-east-1
+        filters:
+          "tag:Name": eshop-semestralka
