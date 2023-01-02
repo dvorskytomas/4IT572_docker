@@ -79,7 +79,7 @@
   hosts: localhost
   tasks:
     - name: Limit instances to one
-      community.aws.ec2_instance:
+      amazon.aws.ec2_instance:
         region: us-east-1
         filters:
           "tag:Name": eshop-semestralka
@@ -88,5 +88,4 @@
         aws_secret_key: "{{ secret_key }}"
         aws_session_token: "{{ session_token }}"
         instance_type: t2.micro
-        image:
-          id: ami-0b0dcb5067f052a63
+        wait: yes
