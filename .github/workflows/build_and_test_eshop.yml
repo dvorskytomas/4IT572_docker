@@ -119,5 +119,3 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > .ec2_ssh_key.pem
           chmod 400 .ec2_ssh_key.pem
           ansible-playbook ansible/ec2_deploy.yml --vault-password-file .ansible_vault_password --key-file .ec2_ssh_key.pem --user ec2-user
-
-
