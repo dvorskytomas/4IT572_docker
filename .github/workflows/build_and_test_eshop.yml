@@ -93,8 +93,8 @@ jobs:
           npm run test -- --colors
 
   Deploy:
-    #needs: [Build, Test]
-    # if: ${{ github.ref == 'refs/heads/master' }}
+    needs: [Build, Test]
+    if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -118,4 +118,4 @@ jobs:
           echo "${{ secrets.ANSIBLE_VAULT_PW }}" > .ansible_vault_password
           echo "${{ secrets.EC2_SSH_KEY }}" > .ec2_ssh_key.pem
           chmod 400 .ec2_ssh_key.pem
-          ansible-playbook ansible/ec2_deploy.yml --vault-password-file .ansible_vault_password --key-file .ec2_ssh_key.pem --user ec2-user -vvvv
+          ansible-playbook ansible/ec2_deploy.yml --vault-password-file .ansible_vault_password --key-file .ec2_ssh_key.pem --user ec2-user
