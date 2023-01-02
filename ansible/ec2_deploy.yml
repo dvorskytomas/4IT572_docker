@@ -75,8 +75,12 @@
         port:
           80
 
-    - name: Delete old eshop instances
+- name: Delete old eshop instances
+  hosts: localhost
+  tasks:
+    - name: Limit instances to one
       community.aws.ec2_instance:
         region: us-east-1
         filters:
           "tag:Name": eshop-semestralka
+        exact_count: 1
