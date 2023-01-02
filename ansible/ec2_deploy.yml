@@ -83,7 +83,7 @@
         region: us-east-1
         state: absent
         filters:
-          instance-state-name: running
+          "tag:Name": eshop_semestralka
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
         aws_session_token: "{{ session_token }}"
