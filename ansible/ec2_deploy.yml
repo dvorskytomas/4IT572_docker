@@ -81,7 +81,7 @@
     - name: Limit instances to one
       amazon.aws.ec2_instance:
         region: us-east-1
-        state: absent
+        state: running
         filters:
           "tag:Name": eshop_semestralka
         aws_access_key: "{{ access_key }}"
