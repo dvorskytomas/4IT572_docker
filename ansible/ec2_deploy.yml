@@ -80,6 +80,7 @@
   tasks:
     - name: Limit instances to one
       amazon.aws.ec2_instance:
+        region: us-east-1
         state: absent
         filters:
           instance-state-name: running
