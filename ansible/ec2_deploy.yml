@@ -85,11 +85,11 @@
         filters:
           "tag:Name": eshop-semestralka
         state: "absent"
-        exact_count: 1
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
         aws_session_token: "{{ session_token }}"
         instance_type: t2.micro
         image:
           id: ami-0b0dcb5067f052a63
-        wait: yes
+       # wait: yes
+      loop: "{{ ec2.instances }}"
