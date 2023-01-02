@@ -88,3 +88,4 @@
         aws_secret_key: "{{ secret_key }}"
         aws_session_token: "{{ session_token }}"
         exact_count: 2
+        wait: yes
