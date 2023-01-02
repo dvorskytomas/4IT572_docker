@@ -13,7 +13,7 @@
         key_name: devops
         vpc_subnet_id: subnet-0016cff4885faa2b6
         security_group: eshop
-        exact_count: 1
+        exact_count: 2
         network:
           assign_public_ip: yes
         wait: yes
