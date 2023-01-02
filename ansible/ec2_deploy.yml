@@ -12,14 +12,14 @@
         region: us-east-1
         key_name: devops
         vpc_subnet_id: subnet-0016cff4885faa2b6
-        group: eshop
+        security_group: eshop
         count: 1
         network:
           assign_public_ip: yes
         wait: yes
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
-        security_token: "{{ session_token }}"
+        aws_session_token: "{{ session_token }}"
       register: ec2
     - name: Add instance host to group
       add_host:
