@@ -84,3 +84,6 @@
         filters:
           "tag:Name": eshop-semestralka
         exact_count: 1
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        aws_session_token: "{{ session_token }}"
