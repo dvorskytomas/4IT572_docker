@@ -74,3 +74,18 @@
     - wait_for:
         port:
           80
+
+- name: Delete old eshop instances
+  hosts: localhost
+  tasks:
+    - name: Limit instances to one
+      amazon.aws.ec2_instance:
+        region: us-east-1
+        state: running
+        filters:
+          "tag:Name": eshop_semestralka
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        aws_session_token: "{{ session_token }}"
+        exact_count: 1
+        wait: yes
